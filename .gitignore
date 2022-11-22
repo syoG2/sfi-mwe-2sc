@@ -1,0 +1,13 @@
+__pycache__/
+.ipynb_checkpoints/
+*.egg-info
+*~
+*-Copy*
+*Untitled*
+*ipynb
+old_*
+keep_old_*
+
+data/
+old/
+playground/

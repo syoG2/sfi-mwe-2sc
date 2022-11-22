@@ -24,8 +24,8 @@ This extracts examples from the FrameNet 1.7 dataset contained in NLTK (`make_ex
 ### 2. Semantic Frame Induction (`semantic_frame_induction/`)
 
 This is a semantic frame induction experiment.
-All target verbs in the dataset have at least 20 example sentences for each frame they evoke, and we limited the maximum number of sentence examples for each LU to 100 and if there were more examples, we randomly selected 100 (`make_dataset.py`).
-In this dataset, `20-100` indicates a development, test, or unused set.
+All target verbs in the dataset have at least 20 example sentences for each frame they evoke, and we limited the maximum number of sentence examples for each LU to 100 and if there were more examples, we randomly selected 100.
+In this dataset, `20-100` indicates a development, test, or unused set (`make_dataset.py`).
 
 ## Citation
 

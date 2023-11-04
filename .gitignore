@@ -11,3 +11,4 @@ keep_old_*
 data/
 old/
 playground/
+dump/

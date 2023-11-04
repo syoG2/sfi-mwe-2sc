@@ -4,12 +4,13 @@ from typing import Any, Dict, List
 
 from nltk.corpus import framenet as fn
 from tqdm import tqdm
-from utils import write_json
+
+from sfimwe2sc.utils.data_utils import write_jsonl
 
 
-def make_exemplar_list(exemplars: List[Any]) -> List[Dict[str, Any]]:
-    ex_idx, exemplar_list = 0, []
-    for exemplar in tqdm(exemplars):
+def make_exemplars(fn_exemplars: List[Any]) -> List[Dict[str, Any]]:
+    ex_idx, exemplars = 0, []
+    for exemplar in tqdm(fn_exemplars):
         try:
             exemplar_dict = {}
             exemplar_dict["ex_idx"] = ex_idx
@@ -21,25 +22,23 @@ def make_exemplar_list(exemplars: List[Any]) -> List[Dict[str, Any]]:
             exemplar_dict["target"] = exemplar.Target
             exemplar_dict["fe"] = exemplar.FE
             exemplar_dict["text"] = exemplar.text
-            exemplar_list.append(exemplar_dict)
+            exemplars.append(exemplar_dict)
             ex_idx += 1
-
         except:
             continue
-    return exemplar_list
+    return exemplars
 
 
 def main(args: Namespace) -> None:
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    exemplar_list = make_exemplar_list(fn.exemplars())
-    write_json(exemplar_list, str(output_dir / "exemplars.jsonl"))
+    exemplars = make_exemplars(fn.exemplars())
+    write_jsonl(exemplars, args.output_dir / "exemplars.jsonl")
 
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--output_dir", type=str, required=True)
+    parser.add_argument("--output_dir", type=Path, required=True)
     args = parser.parse_args()
     print(args)
     main(args)

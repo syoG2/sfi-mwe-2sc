@@ -3,7 +3,7 @@
 source_dir=../../source/preprocessing
 data_dir=../../data/preprocessing
 
-cuda=3
+cuda=0
 
 CUDA_VISIBLE_DEVICES=${cuda} \
     python ${source_dir}/apply_stanza.py \

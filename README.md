@@ -1,33 +1,8 @@
 # Semantic Frame Induction using Masked Word Embeddings and Two-Step Clustering (sfi_mwe_2sc)
 
-The source code of paper: [Semantic Frame Induction using Masked Word Embeddings and Two-Step Clustering](https://aclanthology.org/2021.acl-short.102/), accepted to ACL-IJCNLP 2021.
+[日本語のREADME](https://github.com/Kosuke-Yamada/sfi-mwe-2sc/blob/main/README_ja.md)
 
-## Installation
-
-```sh
-# Before installation, upgrade pip and setuptools.
-$ pip install -U pip setuptools
-
-# Install other dependencies.
-$ pip install -r requirements.txt
-```
-
-## Usage
-
-**All scripts to run the source codes are in `scripts/`.**
-**The file names of the scripts are `(directory name)/(file name).sh`, respectively.**
-
-### 1. Preprocessing (`preprocessing/`)
-
-In this directory, we extract example sentences from the FrameNet 1.7 dataset contained in NLTK (`make_exemplars.py`) and create word-by-word indexes of targets using stanza (`apply_stanza.py`).
-
-### 2. Semantic Frame Induction (`semantic_frame_induction/`)
-
-In this directory, you can conduct a semantic frame induction experiment using masked word embeddings and two-step clustering.
-First, you need to create a dataset.
-All target verbs in the dataset have at least 20 example sentences for each frame that they evoke, and we limited the maximum number of sentence examples for each LU to 100 and if there were more examples, we randomly selected 100.
-In this dataset, `20-100` indicates a development, test, or unused set (`make_dataset.py`).
-Next, you can get the embeddings of target verbs (`get_embedding.py`).
+Comming soon.
 
 
 ## Citation

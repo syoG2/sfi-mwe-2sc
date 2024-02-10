@@ -37,7 +37,7 @@ $ pip install -r requirements.txt
 最後に`evaluate_clustering.py`を実行することで、クラスタリングした結果の評価を行います。
 
 
-## Citation
+## 引用
 
 Please cite our paper if this source code is helpful in your work.
 

@@ -13,6 +13,7 @@ def main(args):
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     df = pd.DataFrame(read_jsonl(args.input_file))
+
     model = BaseNet(
         args.pretrained_model_name, args.normalization, args.device, args.layer
     )

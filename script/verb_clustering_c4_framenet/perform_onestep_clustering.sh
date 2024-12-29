@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source_dir=../../source/verb_clustering
-data_dir=../../data/verb_clustering
+source_dir=../../source/verb_clustering_c4_framenet
+data_dir=../../data/verb_clustering_c4_framenet
 
 setting=20-100
 
@@ -19,7 +19,9 @@ for vec_type in ${vec_types[@]}; do
     d2=${vec_type}/onestep-${clustering_method}
     python ${source_dir}/perform_onestep_clustering.py \
         --input_dir ${data_dir}/embedding/${d1} \
-        --output_dir ${data_dir}/onestep_clustering/${d1}/${d2} \
+        --output_dir ${data_dir}/clustering/${d1}/${d2} \
         --input_params_file ${data_dir}/best_params_onestep_clustering/${d1}/${d2}/best_params.json \
         --clustering_method ${clustering_method}
 done
+
+# --output_dir ${data_dir}/onestep_clustering/${d1}/${d2} \

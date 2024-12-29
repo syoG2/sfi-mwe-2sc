@@ -7,10 +7,10 @@ setting=20-100
 
 pretrained_model_name=bert-base-uncased
 
-# vec_types=(word mask wm)
+vec_types=(word mask wm)
 # vec_types=(word)
 # vec_types=(mask)
-vec_types=(wm)
+# vec_types=(wm)
 
 layers=(00 01 02 03 04 05 06 07 08 09 10 11 12)
 

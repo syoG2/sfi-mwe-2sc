@@ -31,9 +31,7 @@ class BaseEmbedding:
                 vec_list += list(self.model(batch).cpu().detach().numpy())
 
         df_vec = (
-            df.reset_index(drop=True)
-            .reset_index()
-            .rename(columns={"index": "vec_id"})
+            df.reset_index(drop=True).reset_index().rename(columns={"index": "vec_id"})
         )
         vec_array = np.array(vec_list)
         return df_vec, vec_array
@@ -51,12 +49,8 @@ def read_embedding(vec_dir, split, vec_type2run_number, alpha):
     else:
         dir1 = vec_dir / "word" / vec_type2run_number["word"]
         dir2 = vec_dir / "mask" / vec_type2run_number["mask"]
-        word_array = np.load(dir1 / f"vec_{split}.npz", allow_pickle=True)[
-            "vec"
-        ]
-        mask_array = np.load(dir2 / f"vec_{split}.npz", allow_pickle=True)[
-            "vec"
-        ]
+        word_array = np.load(dir1 / f"vec_{split}.npz", allow_pickle=True)["vec"]
+        mask_array = np.load(dir2 / f"vec_{split}.npz", allow_pickle=True)["vec"]
         vec_array = word_array * (1 - alpha) + mask_array * alpha
         ex_file = dir1 / f"exemplars_{split}.jsonl"
     df_vec = pd.DataFrame(read_jsonl(ex_file))

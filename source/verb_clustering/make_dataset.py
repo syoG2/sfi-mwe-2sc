@@ -38,7 +38,8 @@ def main(args: Namespace) -> None:
 
     df_agg = pd.DataFrame(df.agg("lu_id").value_counts())
     ex_idx_list = []
-    for lu_id in df_agg[df_agg["lu_id"] >= args.min_n_examples].index.to_list():
+    # for lu_id in df_agg[df_agg["lu_id"] >= args.min_n_examples].index.to_list():
+    for lu_id in df_agg[df_agg["count"] >= args.min_n_examples].index.to_list():
         df_vf = df[df["lu_id"] == lu_id]
         ex_idx_list += df_vf["ex_idx"].to_list()[: args.max_n_examples]
     df_ex = df[df["ex_idx"].isin(ex_idx_list)]
@@ -56,12 +57,10 @@ def main(args: Namespace) -> None:
     random.shuffle(v1_list)
     random.shuffle(v2_list)
     dev_list = sorted(
-        v1_list[: -int(len(v1_list) * 0.8)]
-        + v2_list[: -int(len(v2_list) * 0.8)]
+        v1_list[: -int(len(v1_list) * 0.8)] + v2_list[: -int(len(v2_list) * 0.8)]
     )
     test_list = sorted(
-        v1_list[-int(len(v1_list) * 0.8) :]
-        + v2_list[-int(len(v2_list) * 0.8) :]
+        v1_list[-int(len(v1_list) * 0.8) :] + v2_list[-int(len(v2_list) * 0.8) :]
     )
 
     for split, verb_list in zip(["dev", "test"], [dev_list, test_list]):

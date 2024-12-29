@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source_dir=../../source/verb_clustering
-data_dir=../../data/verb_clustering
+source_dir=../../source/verb_clustering_c4_framenet
+data_dir=../../data/verb_clustering_c4_framenet
 
 setting=20-100
 
